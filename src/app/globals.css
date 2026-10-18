@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Expressive Palette Tokens */
+    --bg-canvas: #F6F0E5;       /* Warm Ivory */
+    --bg-surface: #FFFFFF;      /* Clean Studio White */
+    --bg-surface-soft: #EFE9DC; /* Soft Sand */
+    --bg-lavender: #E7DEFF;     /* Soft Lavender */
+    --text-ink: #171717;        /* Near-Black Ink */
+    --text-muted: #525252;      /* Slate Grey */
+    --text-subtle: #737373;
+
+    /* Bold Accents */
+    --accent-lime: #C8FF00;     /* Electric Lime */
+    --accent-cobalt: #3155E7;   /* Cobalt Blue */
+    --accent-cyan: #00D5E8;     /* Vivid Cyan */
+    --accent-coral: #FF7048;    /* Coral Orange */
+    --accent-violet: #8A63F6;   /* Violet */
+    --accent-emerald: #10B981;
+
+    /* Dark Panel Specifics (Selective Skeuomorphism for CLI) */
+    --terminal-bg: #15171C;
+    --terminal-surface: #1E222B;
+    --terminal-border: #2D333F;
+
+    --border-ink: #171717;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-ink);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F6F0E5;
+    border-left: 2px solid #171717;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C8FF00;
+    border: 2px solid #171717;
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3155E7;
+  }
+
+  ::selection {
+    background: #C8FF00;
+    color: #171717;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Neo-Brutalist & Tactile Skeuomorphic Classes */
+.neo-card {
+  background-color: #FFFFFF;
+  border: 2.5px solid #171717;
+  box-shadow: 4px 4px 0px 0px #171717;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neo-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px #171717;
+}
+
+.neo-card-tactile {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F4 100%);
+  border: 2.5px solid #171717;
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+    4px 4px 0px 0px #171717;
+}
+
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  border: 2px solid #171717;
+  box-shadow: 3px 3px 0px 0px #171717;
+  transition: all 0.1s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.neo-btn:hover {
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: 5px 5px 0px 0px #171717;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #171717;
+}
+
+/* Tactile 3D Isometric Cube Styles */
+.isometric-box {
+  transform: rotateX(55deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+}
+
+/* Dot grid on warm ivory */
+.bg-ivory-dots {
+  background-size: 24px 24px;
+  background-image: radial-gradient(#171717 1px, transparent 1px);
+  background-color: #F6F0E5;
+}
+
+.bg-ivory-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(23, 23, 23, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 23, 23, 0.06) 1px, transparent 1px);
+}
+
+/* Recessed Terminal Screen (Selective Skeuomorphism) */
+.terminal-screen {
+  background-color: #12141A;
+  border: 2.5px solid #171717;
+  box-shadow: 
+    inset 0 3px 8px 0 rgba(0, 0, 0, 0.8),
+    6px 6px 0px 0px #171717;
+}
+
+/* LED Indicator lights */
+.tactile-led {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: inline-block;
+}
+
+.tactile-led-green {
+  background-color: #10B981;
+  box-shadow: 0 0 8px #10B981, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.tactile-led-lime {
+  background-color: #C8FF00;
+  box-shadow: 0 0 8px #C8FF00, inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.tactile-led-coral {
+  background-color: #FF7048;
+  box-shadow: 0 0 8px #FF7048, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 3px solid #3155E7;
+  outline-offset: 3px;
 }
