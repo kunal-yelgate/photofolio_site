@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
 import RocketIntro from "./components/RocketIntro";
+import Hero from "./components/Hero";
 
 const projects = [
   {
@@ -36,21 +37,29 @@ const projects = [
 
 const skillGroups = [
   {
+    title: "Languages",
+    skills: ["C++", "Python","Java", "javaScript" ]
+  },
+  {
     title: "FRONTEND",
     skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js"],
   },
   {
     title: "BACKEND",
-    skills: ["Node.js", "Express", "Python", "FastAPI", "REST APIs"],
+    skills: ["Node.js", "Express", "FastAPI", "REST APIs", "GraphQL"],
   },
   {
-    title: "DATABASE & TOOLS",
-    skills: ["MongoDB", "PostgreSQL", "Git", "GitHub", "Docker"],
+    title: "DATABASE",
+    skills: ["MongoDB", "PostgreSQL"],
   },
   {
     title: "AI / CLOUD",
-    skills: ["LLMs", "RAG", "AWS", "AI Integration"],
+    skills: ["LLMs", "RAG", "AI Integration"],
   },
+  {
+    title: " Cloud & DevOps",
+    skills: ["Git" , "Docker", "GCP", "AWS"]
+  }
 ];
 
 function BrutalistTicker() {
@@ -59,6 +68,7 @@ function BrutalistTicker() {
     "FULL-STACK DEVELOPMENT",
     "AI-POWERED PROJECTS",
     "CREATIVE ENGINEERING",
+    "Cloud & Distributed System"
   ];
 
   return (
@@ -369,9 +379,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EDUCATION */}
+      <section
+        id="education"
+        className="border-b-2 border-black bg-[#d7ff00] px-5 py-20 md:px-12 md:py-28"
+      >
+        <SectionLabel number="03" label="Education" />
+
+        <div className="mb-12">
+          <h2 className="text-5xl font-black uppercase leading-[0.9] tracking-tighter md:text-7xl">
+            ALWAYS
+            <br />
+            <span className="text-[#555]">LEARNING.</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <article className="border-2 border-black bg-[#f4f1e8] p-6 transition hover:-translate-y-1 md:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+              <span className="text-xs font-black uppercase tracking-widest">
+                Bachelor of Technology · Computer Science and Engineering
+              </span>
+              <span className="text-xs font-black uppercase">
+                August 2025 – August 2028
+              </span>
+            </div>
+            <h3 className="mt-6 text-2xl font-black uppercase tracking-tight md:text-3xl">
+              Shri Guru Gobind Singhji Institute of Engineering and Technology
+            </h3>
+            <p className="mt-2 text-sm font-bold uppercase tracking-wide">
+              Vishnupuri, Nanded
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {["JavaScript", "Python"].map((skill) => (
+                <span
+                  key={skill}
+                  className="border border-black px-3 py-1 text-xs font-bold uppercase"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </article>
+
+          <article className="border-2 border-black bg-[#f4f1e8] p-6 transition hover:-translate-y-1 md:p-8">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+              <span className="text-xs font-black uppercase tracking-widest">
+                Diploma · Electronics and Telecommunication
+              </span>
+              <span className="text-xs font-black uppercase">
+                September 2022 – May 2025
+              </span>
+            </div>
+            <h3 className="mt-6 text-2xl font-black uppercase tracking-tight md:text-3xl">
+              Maharashtra State Board of Technical Education (MSBTE)
+            </h3>
+          </article>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section
+        id="experience"
+        className="px-5 py-20 md:px-12 md:py-28"
+      >
+        <SectionLabel number="04" label="Experience" />
+
+        <div className="mb-12">
+          <h2 className="text-5xl font-black uppercase leading-[0.9] tracking-tighter md:text-7xl">
+            OPEN SOURCE
+            <br />
+            <span className="text-[#777]">IN ACTION.</span>
+          </h2>
+        </div>
+
+        <article className="border-2 border-black p-6 transition hover:bg-[#d7ff00] md:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+            <span className="text-xs font-black uppercase tracking-widest">
+              Contributor · Remote
+            </span>
+            <span className="text-xs font-black uppercase">
+              April – July 2026 · 4 months
+            </span>
+          </div>
+          <h3 className="mt-6 text-2xl font-black uppercase tracking-tight md:text-3xl">
+            Nexus Spring of Code (NSoC)
+          </h3>
+          <p className="mt-4 text-sm font-medium leading-relaxed md:text-base">
+            Contributed 10+ merged pull requests across backend systems and
+            full-stack features, helping make the platform more scalable,
+            reliable, and user-friendly.
+          </p>
+          <ul className="mt-6 space-y-4 text-sm font-medium leading-relaxed md:text-base">
+            <li className="flex gap-3">
+              <span className="font-black">↗</span>
+              <span>
+                Resolved concurrency and data consistency issues in the GitHub
+                sync pipeline, improving reliability during live ranking
+                calculations and protecting user data from race conditions.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="font-black">↗</span>
+              <span>
+                Improved the user experience with skeleton loading states,
+                clearer dashboard flows, and performance and stability fixes;
+                contributed to high-priority features throughout the program.
+              </span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
       {/* TECHNICAL ARSENAL */}
       <section className="px-5 py-20 md:px-12 md:py-28">
-        <SectionLabel number="03" label="Technical Arsenal" />
+        <SectionLabel number="05" label="Technical Arsenal" />
 
         <h2 className="mb-12 text-5xl font-black uppercase leading-none tracking-tighter md:text-7xl">
           TOOLS OF
@@ -415,7 +537,7 @@ export default function Home() {
         id="contact"
         className="border-t-2 border-black bg-black px-5 py-20 text-white md:px-12 md:py-28"
       >
-        <SectionLabel number="04" label="Contact" />
+        <SectionLabel number="06" label="Contact" />
 
         <h2 className="text-5xl font-black uppercase leading-[0.9] tracking-tighter md:text-8xl">
           HAVE AN
@@ -431,7 +553,7 @@ export default function Home() {
         </p>
 
         <a
-          href="mailto:your-email@example.com"
+          href="mailto:yelgatekunal.com"
           className="mt-10 inline-flex border-2 border-[#d7ff00] bg-[#d7ff00] px-6 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:bg-transparent hover:text-[#d7ff00]"
         >
           Send Me an Email ↗
