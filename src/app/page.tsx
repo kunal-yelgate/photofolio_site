@@ -11,8 +11,8 @@ const projects = [
     title: "RepoLens",
     category: "AI / Developer Tools",
     description:
-      "An AI-powered repository analyzer designed to help developers explore codebases and understand project architecture.",
-    stack: ["Next.js", "Python", "AI", "AST"],
+      "An offline-first codebase intelligence tool that builds AST knowledge graphs, maps dependencies and entry points, and generates grounded architecture documentation.",
+    stack: ["Python", "AST", "NetworkX", "Ollama"],
     link: "https://github.com/kunal-yelgate/repolens",
   },
   {
@@ -20,17 +20,18 @@ const projects = [
     title: "GithubAI",
     category: "AI / Full-Stack",
     description:
-      "A GitHub repository analysis project focused on exploring code, understanding project structure, and AI-assisted insights.",
-    stack: ["React", "Python", "GitHub API", "AI"],
+      "A repository intelligence platform with GitHub sign-in, repository and language analysis, technology detection, and AI-assisted code insights.",
+    stack: ["React", "FastAPI", "GitHub OAuth", "AI"],
     link: "https://github.com/kunal-yelgate/GithubAI",
+    liveLink: "https://githubai-anly.vercel.app",
   },
   {
     number: "03",
     title: "Legal RAG System",
     category: "AI / RAG",
     description:
-      "A privacy-focused legal document retrieval project exploring RAG pipelines and grounded answers from documents.",
-    stack: ["Python", "RAG", "LLM", "Vector Search"],
+      "A local legal research assistant that retrieves evidence from uploaded documents, answers with source citations, and abstains when the evidence is insufficient.",
+    stack: ["FastAPI", "Next.js", "SQLite", "Ollama"],
     link: "https://github.com/kunal-yelgate/Privacy-Preserving-RAG-Systems-for-Legal-Document-Retrieval",
   },
 ];
@@ -219,6 +220,42 @@ export default function Home() {
               Get In Touch ↗
             </a>
           </div>
+
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a
+              href="https://github.com/kunal-yelgate"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Kunal Yelgate on GitHub"
+              className="inline-flex items-center gap-3 border-2 border-black px-5 py-3 text-sm font-black uppercase tracking-wider transition hover:bg-black hover:text-white"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-5 w-5 fill-current"
+              >
+                <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.74.08-.74 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z" />
+              </svg>
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kunal-yelgate"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Kunal Yelgate on LinkedIn"
+              className="inline-flex items-center gap-3 border-2 border-black px-5 py-3 text-sm font-black uppercase tracking-wider transition hover:bg-black hover:text-white"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-5 w-5 fill-current"
+              >
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.44c.98 0 1.79-.77 1.79-1.73V1.73C24 .77 23.19 0 22.21 0h.01Z" />
+              </svg>
+              LinkedIn
+            </a>
+          </div>
         </div>
 
         {/* KY MONOGRAM */}
@@ -306,18 +343,30 @@ export default function Home() {
                   ))}
                 </div>
 
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-8 flex items-center justify-between border-t-2 border-black pt-4 text-sm font-black uppercase"
-                >
-                  View Repository
-
-                  <span className="text-xl transition group-hover:translate-x-2">
-                    ↗
-                  </span>
-                </a>
+                <div className="mt-8 flex flex-wrap gap-4 border-t-2 border-black pt-4 text-sm font-black uppercase">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2"
+                  >
+                    View Repository
+                    <span className="text-xl transition group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  </a>
+                  {"liveLink" in project && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2"
+                    >
+                      Live Demo
+                      <span className="text-xl">↗</span>
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
@@ -432,8 +481,11 @@ export default function Home() {
               </span>
             </div>
             <h3 className="mt-6 text-2xl font-black uppercase tracking-tight md:text-3xl">
-              Maharashtra State Board of Technical Education (MSBTE)
+              Vilasrao Deshmukh Foundation
             </h3>
+            <p className="mt-2 text-sm font-bold uppercase tracking-wide">
+              Maharashtra State Board of Technical Education (MSBTE)
+            </p>
           </article>
         </div>
       </section>
